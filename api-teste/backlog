@@ -1,0 +1,82 @@
+BACKLOG ############################################################################
+
+***Ghost Driver
+
+
+Gerador de código único(UUID)
+
+Aguardar término do carregamento de um IFrame (Problema que ocorreu nos testes do Portal do Assinante)
+
+Preencher aleatoriamente não está executando o SendKeys
+
+Esperar arquivo ser baixado
+
+Formatação de Datas e DatePicker
+
+Carregar propriedades uma unica vez(lazy load)
+
+browser default
+
+exibiu todos elementos da lista
+
+
+FIM BACKLOG #########################################################################
+
+v2.16 - WIP 
+
+	Interface para testes de requisições HTTP
+
+	Cookies(existencia, valor, contem, apagar, criar)
+	
+	Manipulação de requisições HTTP(Leandro)
+	
+	obter valor de atributo css - OK
+	
+	Melhoria no tratamento do StaleElement - OK
+
+	Regra para printar tela quando o teste lançar falha e/ou erro - OK 
+
+	Alteração do nome do JAR gerado (api-teste) - OK
+	
+	Alteração do nome do método exibiuELemento para existeElemento - OK
+	
+	Alteração do nome do método .tornarElementoInvisivel para .tornarInvisivel - OK
+	
+	Alteração do nome do pacote junitrunner para junit - OK
+
+===============x===================x===========================x====================
+
+v2.15 
+
+	Filtrar execução de classes por ambiente - OK
+
+	Implementar Scrool Elemento - OK
+	
+	Localizar lista de elementos - OK
+
+===============x===================x===========================x====================
+
+v2.14
+
+	Filtro de Ambientes de execução de testes - OK
+	
+	Tornar elemento invisível - OK
+	
+	Preenchimento com números aleatórios - OK
+
+===============x===================x===========================x====================
+
+v2.13
+
+	Configurar Download - OK!
+	Drag & Drop - OK!
+		arrastarElementoPara(<outro elemento>)
+	
+	Duplo Click - OK!
+	
+	Explicit Wait - OK!
+
+
+
+
+
