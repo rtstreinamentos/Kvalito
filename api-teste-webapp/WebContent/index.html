@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aplicação para executar os testes da API</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="estilo.css" />
+</head>
+<body>
+	<h1>Página para testes a API TestEngine</h1>
+
+	<div id="todos-find-elements-by" class="box">
+		<p>Por TAG-NAME</p>
+		<p name="todos-find-elements-by-name">Por NAME</p>
+		<p id="todos-find-elements-by-id">Por ID</p>
+		<p class="todos-find-elements-by-class">Por CLASS</p>
+		<p>Por XPATH</p>
+		<p id="todos-find-elements-by-cssselector">Por CSS-SELECTOR</p>
+	</div>
+
+	<div id="stale-element" class="box">
+		<span>Box para teste do Stale Element</span>
+		<div>
+			<label for="stale-element-estado">Estado</label> <select
+				id="stale-element-estado">
+				<option value="">Selecione</option>
+				<option value="RJ">Rio de Janeiro</option>
+				<option value="SP">São Paulo</option>
+			</select> <br>
+			<div id="stale-cidades">
+				<label for="stale-element-cidade">Cidade</label> <select
+					id="stale-element-cidade"></select>
+			</div>
+		</div>
+	</div>
+
+	<div id="mouse-over" class="box">
+		<div id="mouse-over-passe-mouse">Passe o mouse aqui</div>
+		<div id="mouse-over-ira-aparecer"
+			style="display: none; background-color: gray;">Apareceu</div>
+	</div>
+
+	<div id="alert" class="box">
+		<button id="alert-lancar">Clique aqui</button>
+	</div>
+
+	<div id="esperar-visibilidade" class="box">
+		<button id="esperar-visibilidade-button">Clique aqui e espere</button>
+		<div id="esperar-visibilidade-div-que-aparecera"
+			style="display: none; background-color: red;">Apareceu!</div>
+	</div>
+
+	<div id="esperar-visibilidade-div-dinamico" class="box">
+		<button id="esperar-visibilidade-div-dinamico-button">Clique
+			aqui e espere</button>
+
+	</div>
+
+	<div id="download-arquivo" class="box">
+		<a id="link-download-arquivo" href="arquivoDownload.zip">Link
+			Download</a>
+	</div>
+
+	<div id="upload-arquivos" class="box">
+		<input type="file" id="input-upload-arquivo" />
+	</div>
+
+	<iframe id="iframe-teste" width="100%" height="40"
+		src="pagina-usada-iframe.html"> </iframe>
+
+	<div id="upload-arquivos" class="box">
+		<input type="text" id="caixa-texto"
+			onKeyPress="verificaPressionouEnter(event, this);" /> <input
+			type="number" id="campo-number" />
+	</div>
+
+	<div id="arrastar-elemento" class="box">
+		<div id="arrastar-elemento-origem-para-destino"
+			class="ui-widget-content">Me arraste!</div>
+		<hr>
+		<div id="elemento-destino">Arraste para cá!</div>
+	</div>
+
+	<div id="mudar-foco-sriver" class="box">
+		<a id="abre-popup" target="_blank" href="popup.html"
+			onclick="javascript:void window.open(href,'1111','width=700,height=500,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=250,top=200');return false;">Abrir
+			PopUp</a>
+			<a id="abre-janela" target="_blank" href="popup.html">Abrir Janela</a>
+	</div>
+
+
+
+	<script type="text/javascript">
+		$("#esperar-visibilidade-button").click(function() {
+			setTimeout(function() {
+				$("#esperar-visibilidade-div-que-aparecera").show();
+			}, 2000);
+		});
+
+		$("#esperar-visibilidade-div-dinamico-button")
+				.click(
+						function() {
+							setTimeout(
+									function() {
+										var divConteudo = "<div id='esperar-visibilidade-div-dinamico-que-aparecera' style='display : block; background-color: blue;'>Apareceu!</div>";
+										$("#esperar-visibilidade-div-dinamico")
+												.append(divConteudo);
+									}, 2000);
+						});
+
+		$(init);
+		function init() {
+			$("#arrastar-elemento-origem-para-destino").draggable();
+		}
+
+		$("#alert-lancar").click(function() {
+			alert("Exibiu alerta");
+		});
+
+		$("#mouse-over-passe-mouse").mouseover(function() {
+			$("#mouse-over-ira-aparecer").show();
+		});
+
+		$("#mouse-over-passe-mouse").mouseout(function() {
+			$("#mouse-over-ira-aparecer").hide();
+		});
+
+		$("#stale-element-estado").change(
+				function() {
+					var estadoSelecionado = $(
+							"#stale-element-estado option:selected").text();
+					setTimeout(function() {
+						carregarCidadesDoEstado(estadoSelecionado);
+					}, 2000);
+				});
+
+		function verificaPressionouEnter(e, textarea) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 13) { //Enter keycode
+				$("#caixa-texto").val("Pressionou Enter!");
+			}
+		}
+
+		function carregarCidadesDoEstado(estadoSelecionado) {
+			$("#stale-cidades").empty();
+			$("#stale-cidades").append(
+					"<label for=\"stale-element-cidade\">Cidade</label>");
+			$("#stale-cidades").append(
+					"<select id=\"stale-element-cidade\"></select>");
+			$("#stale-element-cidade").append("<option>Selecione</option>");
+			if (estadoSelecionado == "Rio de Janeiro") {
+				$("#stale-element-cidade").append(
+						"<option>Rio de Janeiro</option>");
+				$("#stale-element-cidade").append("<option>Niterói</option>");
+			}
+			if (estadoSelecionado == "São Paulo") {
+				$("#stale-element-cidade").append("<option>São Paulo</option>");
+				$("#stale-element-cidade").append("<option>Santos</option>");
+			}
+		}
+	</script>
+</body>
+</html>
