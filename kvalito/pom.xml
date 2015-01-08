@@ -6,7 +6,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<groupId>kvalito</groupId>
+	<groupId>br.com.infoglobo.kvalito</groupId>
 	<artifactId>kvalito</artifactId>
 	<version>3.0.0</version>
 	<packaging>jar</packaging>
