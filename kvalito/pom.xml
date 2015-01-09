@@ -12,7 +12,31 @@
 	<packaging>jar</packaging>
 
 	<name>Kvalito</name>
-	<url>https://github.com/Infoglobo/Kvalito.git</url>
+	<description>Kvalito v3</description>
+	<url>https://github.com/Infoglobo/Kvalito</url>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>rbosisio</id>
+			<name>Rodrigo Bosisio</name>
+			<email>rodrigo.bosisio@infoglobo.com.br</email>
+			<organization>Infoglobo</organization>
+			<organizationUrl>https://github.com/Infoglobo</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>git@github.com:Infoglobo/Kvalito.git</url>
+		<connection>scm:git:git@github.com:Infoglobo/Kvalito.git</connection>
+		<developerConnection>scm:git:git@github.com:Infoglobo/Kvalito.git</developerConnection>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -69,6 +93,37 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<id>git</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>local</id>
 			<build>
@@ -144,4 +199,5 @@
 			<url>https://inforep01.ogmaster.local:8443/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+
 </project>
