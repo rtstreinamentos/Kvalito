@@ -4,7 +4,7 @@ import java.security.InvalidParameterException;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ConveteCor {
+public class ConversorCores {
 
 	/**
 	 * Converte o uma String com o valor RGB para Hexadecimal.
