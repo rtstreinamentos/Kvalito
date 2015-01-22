@@ -1,6 +1,9 @@
 package testes.conversores;
 
 import static org.junit.Assert.assertEquals;
+
+import java.security.InvalidParameterException;
+
 import kvalito.conversores.ConveteCor;
 
 import org.junit.Test;
@@ -48,8 +51,8 @@ public class TestesConverterRgbParaHexadecimal {
 
 			ConveteCor.converterRgbParaHexadecimal(null);
 
-		} catch (Exception e) {
-			assertEquals("Falhou ao ignorar valor NULO", resultadoEsperado,
+		} catch (InvalidParameterException e) {
+			assertEquals("Falhou ao tratar valor NULO", resultadoEsperado,
 					e.getMessage());
 		}
 
@@ -64,8 +67,8 @@ public class TestesConverterRgbParaHexadecimal {
 
 			ConveteCor.converterRgbParaHexadecimal("");
 
-		} catch (Exception e) {
-			assertEquals("Falhou ao ignorar String vazia!", resultadoEsperado,
+		} catch (InvalidParameterException e) {
+			assertEquals("Falhou ao tratar String vazia!", resultadoEsperado,
 					e.getMessage());
 		}
 
@@ -80,8 +83,8 @@ public class TestesConverterRgbParaHexadecimal {
 
 			ConveteCor.converterRgbParaHexadecimal(" ");
 
-		} catch (Exception e) {
-			assertEquals("Falhou ao ignorar espacos em branco!",
+		} catch (InvalidParameterException e) {
+			assertEquals("Falhou ao tratar espacos em branco!",
 					resultadoEsperado, e.getMessage());
 		}
 
@@ -96,8 +99,24 @@ public class TestesConverterRgbParaHexadecimal {
 
 			ConveteCor.converterRgbParaHexadecimal("	");
 
-		} catch (Exception e) {
-			assertEquals("Falhou ao ignorar TAB em branco!", resultadoEsperado,
+		} catch (InvalidParameterException e) {
+			assertEquals("Falhou ao tratar TAB em branco!", resultadoEsperado,
+					e.getMessage());
+		}
+
+	}
+
+	@Test
+	public void verificarConversaoDeRGBInvalido() {
+
+		String resultadoEsperado = "Cor RGB invalida!";
+
+		try {
+
+			ConveteCor.converterRgbParaHexadecimal("rgb(0,0,0,0,255)");
+
+		} catch (InvalidParameterException e) {
+			assertEquals("Falhou ao tratar RGB invalido!", resultadoEsperado,
 					e.getMessage());
 		}
 
